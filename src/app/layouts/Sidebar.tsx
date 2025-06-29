@@ -24,11 +24,11 @@ export function Sidebar() {
   return (
     <>
       <aside
-        className={`w-64 lg:sticky absolute top-0 overflow-y-auto scrollbar-hidden pb-4 flex-col gap-2 px-2 ${
+        className={`w-64 lg:sticky absolute top-0 overflow-y-auto scrollbar-hidden pb-4 flex-col gap-2 px-2 bg-white ${
           isLargeOpen ? "lg:flex" : "lg:hidden"
-        } ${isSmallOpen ? "flex bg-[#181818] z-[999] max-h-screen" : "hidden"}`}
+        } ${isSmallOpen ? "flex bg-white z-[999] max-h-screen" : "hidden"}`}
       >
-        <div className="lg:hidden pt-2 pb-4 px-2 sticky top-0">
+        <div className="lg:hidden pt-2 pb-4 px-2 sticky top-0 bg-white">
           <PageHeaderFirstSection />
         </div>
         <LargeSidebarSection>
@@ -41,7 +41,7 @@ export function Sidebar() {
           <LargeSidebarItem IconOrImgUrl={Video} title="Shorts" url="/shorts" />
           <LargeSidebarItem IconOrImgUrl={Tv} title="TV Mode" url="/tv" />
         </LargeSidebarSection>
-        <hr className="border-t border-gray-700 opacity-50" />
+        <hr className="border-t border-gray-200 opacity-50" />
         <LargeSidebarSection visibleItemCount={5}>
           <LargeSidebarItem
             IconOrImgUrl={History}
@@ -67,7 +67,7 @@ export function Sidebar() {
             />
           ))}
         </LargeSidebarSection>
-        <hr className="border-t border-gray-700 opacity-50" />
+        <hr className="border-t border-gray-200 opacity-50" />
 
       </aside>
     </>
@@ -95,13 +95,13 @@ function LargeSidebarSection({
 
   return (
     <div>
-      {title && <div className="ml-4 mt-2 text-lg mb-1">{title}</div>}
+      {title && <div className="ml-4 mt-2 text-lg mb-1 text-black">{title}</div>}
       {visibleChildren}
       {showExpandButton && (
         <Button
           onClick={() => setIsExpanded(e => !e)}
           variant="ghost"
-          className="w-full flex items-center rounded-lg gap-4 p-3 hover:bg-[#4a2f39]"
+          className="w-full flex items-center rounded-lg gap-4 p-3 hover:bg-gray-100 text-black"
         >
           <ButtonIcon className="w-6 h-6" />
           <div>{isExpanded ? "Show less" : "Show more"}</div>
@@ -129,8 +129,8 @@ function LargeSidebarItem({
       href={url}
       className={twMerge(
         buttonStyles({ variant: "ghost" }),
-        `w-full flex items-center rounded-lg gap-4 p-3 hover:bg-[#4a2f39] ${
-          isActive && "font-bold text-white bg-[#38242c] hover:bg-[#4a2f39]"
+        `w-full flex items-center rounded-lg gap-4 p-3 hover:bg-gray-100 text-black ${
+          isActive && "font-bold text-black bg-gray-100 hover:bg-gray-200"
         }`
       )}
     >

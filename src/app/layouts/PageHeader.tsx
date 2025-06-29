@@ -2,6 +2,7 @@
 import { ArrowLeft, Bell, CirclePlus, Menu, Mic, Search, Settings, User } from "lucide-react"
 import logo from "../../../public/logo.png"
 import { Button } from "../components/Button"
+import { SearchBar } from "../components/SearchBar"
 import { useState } from "react"
 import { useSidebarContext } from "../contexts/SidebarContext"
 import Image from "next/image"
@@ -10,10 +11,16 @@ import Link from "next/link"
 export function PageHeader() {
   const [showFullWidthSearch, setShowFullWidthSearch] = useState(false)
 
+  const handleSearch = (query: string) => {
+    console.log('Searching for:', query)
+    // TODO: Implement search functionality
+    setShowFullWidthSearch(false)
+  }
+
   return (
-    <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
+    <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4 bg-white">
       <PageHeaderFirstSection hidden={showFullWidthSearch} />
-      <form
+      <div
         className={`gap-4 flex-grow justify-center ${
           showFullWidthSearch ? "flex" : "hidden md:flex"
         }`}
@@ -29,18 +36,8 @@ export function PageHeader() {
             <ArrowLeft />
           </Button>
         )}
-        <div className="flex items-center bg-[#121212] rounded-full px-4 py-4 w-full max-w-[700px]">
-  <Search className="text-gray-400 mr-2" />
-  <input
-    type="search"
-    placeholder="Search"
-    className="bg-transparent text-white placeholder-gray-400 outline-none w-full"
-  />
-  <button>
-    <Mic className="text-gray-400" />
-  </button>
-</div>
-      </form>
+        <SearchBar onSearch={handleSearch} />
+      </div>
       <div
         className={`flex-shrink-0 md:gap-2 ${
           showFullWidthSearch ? "hidden" : "flex"

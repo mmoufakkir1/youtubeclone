@@ -52,8 +52,8 @@ export function CategoryPills({
             onClick={() => onSelect(category)}
             className={`py-1.5 px-4 text-sm rounded-md whitespace-nowrap transition-colors
               ${selectedCategory === category
-                ? "bg-white text-black font-medium"
-                : "bg-[#272727] text-white hover:bg-[#3a3a3a]"}`}
+                ? "bg-black text-white font-medium"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
           >
             {category}
           </Button>
@@ -61,11 +61,11 @@ export function CategoryPills({
       </div>
 
       {isLeftVisible && (
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#181818] from-50% to-transparent w-24 h-full">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-white from-50% to-transparent w-24 h-full">
           <Button
             variant="ghost"
             size="icon"
-            className="h-full aspect-square w-auto p-1.5"
+            className="h-full aspect-square w-auto p-1.5 text-gray-700 hover:bg-gray-100"
             onClick={() => {
               setTranslate(translate => {
                 const newTranslate = translate - TRANSLATE_AMOUNT
@@ -80,11 +80,11 @@ export function CategoryPills({
       )}
 
       {isRightVisible && (
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-gradient-to-l from-[#181818] from-50% to-transparent w-24 h-full flex justify-end">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-gradient-to-l from-white from-50% to-transparent w-24 h-full flex justify-end">
           <Button
             variant="ghost"
             size="icon"
-            className="h-full aspect-square w-auto p-1.5"
+            className="h-full aspect-square w-auto p-1.5 text-gray-700 hover:bg-gray-100"
             onClick={() => {
               setTranslate(translate => {
                 if (containerRef.current == null) {
